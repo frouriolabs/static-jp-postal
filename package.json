@@ -6,7 +6,8 @@
   "license": "MIT",
   "bin": "bin/index.js",
   "scripts": {
-    "dev": "npm run build && node bin/index.js",
+    "compress": "ts-node src/compress.ts",
+    "dev": "ts-node src/dev.ts",
     "build": "npm run rimraf && tsc",
     "rimraf": "node -e \"require('fs').rmdirSync('dist', { recursive: true })\"",
     "release": "standard-version --skip.tag",
@@ -37,7 +38,10 @@
   "dependencies": {
     "@types/minimist": "^1.2.2",
     "chokidar": "^3.5.3",
-    "minimist": "^1.2.5"
+    "csv-parse": "^5.0.4",
+    "iconv-lite": "^0.6.3",
+    "minimist": "^1.2.5",
+    "ts-node": "^10.4.0"
   },
   "eslintConfig": {
     "env": {
