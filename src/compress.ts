@@ -65,14 +65,14 @@ const compress = (rows: Row[]) => {
     `src/data/data.ts`,
     `import type * as Types from '../type'
 
-${data.join('\n\n')}`,
+${data.join('\n\n')}\n`,
     'utf8'
   )
   fs.writeFileSync(
     `src/data/kana.ts`,
     `import type * as Types from '../type'
 
-${kana.join('\n\n')}`,
+${kana.join('\n\n')}\n`,
     'utf8'
   )
 })()
