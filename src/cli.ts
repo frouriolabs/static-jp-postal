@@ -2,8 +2,14 @@ import minimist from 'minimist'
 import { readCsv } from './readCsv'
 import { Word } from './type'
 import fs from 'fs'
+import path from 'path'
 
-const log = async (input = 'KEN_ALL.CSV', outputdir = 'api') => {
+const API_VER = 'v0.1'
+
+const generate = async (
+  input = path.join(__dirname, '../assets/KEN_ALL.CSV'),
+  outputDir = 'api'
+) => {
   const csv = await readCsv(input)
   const data = csv.reduce((dist, row) => {
     return {
@@ -13,28 +19,30 @@ const log = async (input = 'KEN_ALL.CSV', outputdir = 'api') => {
         [row.code.slice(3)]: [
           ...(dist[row.code.slice(0, 3)]?.[row.code.slice(3)] ?? []),
           {
-            address1: row.address[0],
-            address2: row.address[1],
-            ...(row.address[2] ? { address3: row.address[2] } : {})
+            pref: row.address[0],
+            address1: row.address[1],
+            ...(row.address[2] ? { address2: row.address[2] } : {})
           }
         ]
       }
     }
-  }, {} as Record<string, Record<string, { address1: Word; address2: Word; address3?: Word }[]>>)
+  }, {} as Record<string, Record<string, { pref: Word; address1: Word; address2?: Word }[]>>)
 
-  if (!fs.existsSync(outputdir)) {
-    fs.mkdirSync(outputdir, { recursive: true })
+  const baseDir = path.join(outputDir, API_VER)
+
+  if (!fs.existsSync(baseDir)) {
+    fs.mkdirSync(baseDir, { recursive: true })
   }
 
-  Object.keys(data).forEach(prefix => {
-    if (!fs.existsSync(`${outputdir}/${prefix}`)) {
-      fs.mkdirSync(`${outputdir}/${prefix}`)
+  Object.keys(data).forEach(head => {
+    if (!fs.existsSync(`${baseDir}/${head}`)) {
+      fs.mkdirSync(`${baseDir}/${head}`)
     }
 
-    Object.keys(data[prefix]).forEach(postfix => {
+    Object.keys(data[head]).forEach(postfix => {
       fs.writeFileSync(
-        `${outputdir}/${prefix}/${postfix}.json`,
-        JSON.stringify(data[prefix][postfix]),
+        `${baseDir}/${head}/${postfix}.json`,
+        JSON.stringify(data[head][postfix]),
         'utf8'
       )
     })
@@ -43,12 +51,12 @@ const log = async (input = 'KEN_ALL.CSV', outputdir = 'api') => {
 
 export const run = (args: string[]) => {
   const argv = minimist(args, {
-    string: ['version', 'input', 'outputdir'],
-    alias: { v: 'version', i: 'input', o: 'outputdir' }
+    string: ['version', 'input', 'outputDir'],
+    alias: { v: 'version', i: 'input', o: 'outputDir' }
   })
 
   // eslint-disable-next-line no-unused-expressions
   argv.version !== undefined
     ? console.log(`v${require('../package.json').version}`)
-    : log(argv.input, argv.outputdir)
+    : generate(argv.input, argv.outputDir)
 }
