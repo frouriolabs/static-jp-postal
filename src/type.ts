@@ -151,5 +151,5 @@ export type Kana44 = Kana & Pref44
 export type Kana45 = Kana & Pref45
 export type Kana46 = Kana & Pref46
 
-type Word = { kana: string; kanji: string }
+export type Word = { kana: string; kanji: string }
 export type Row = { code: string; address: [Word, Word, Word | null] }

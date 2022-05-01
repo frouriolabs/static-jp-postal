@@ -1,13 +1,14 @@
 {
-  "name": "typescript-oss-template",
+  "name": "static-jp-postal",
   "version": "0.0.1",
   "description": "TypeScript OSS template",
   "author": "Solufa <solufa2020@gmail.com>",
   "license": "MIT",
   "bin": "bin/index.js",
   "scripts": {
+    "dev": "npm run build && node bin/index.js -i assets/KEN_ALL.CSV -o sample/v1.0",
     "compress": "ts-node src/compress.ts",
-    "dev": "ts-node src/dev.ts",
+    "dev:old": "ts-node src/dev.ts",
     "build": "npm run rimraf && tsc",
     "rimraf": "node -e \"require('fs').rmdirSync('dist', { recursive: true })\"",
     "release": "standard-version --skip.tag",

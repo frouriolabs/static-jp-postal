@@ -52,7 +52,7 @@ const compress = (rows: Row[]) => {
 ;(async () => {
   if (!fs.existsSync('src/data')) fs.mkdirSync('src/data')
 
-  const csv = await readCsv()
+  const csv = await readCsv('assets/KEN_ALL.CSV')
   const { data, kana } = compress(csv).reduce(
     (dict, { text, kana }, i) => ({
       data: [...dict.data, `export const DATA${i} = \`${text}\` as Types.Data${i}`],

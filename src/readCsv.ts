@@ -3,9 +3,9 @@ import iconv from 'iconv-lite'
 import fs from 'fs'
 import type { Row } from './type'
 
-export const readCsv = () =>
+export const readCsv = (input: string) =>
   new Promise<Row[]>(resolve => {
-    fs.createReadStream('assets/KEN_ALL.CSV')
+    fs.createReadStream(input)
       .pipe(iconv.decodeStream('Shift_JIS'))
       .pipe(
         parse((_, data: string[][]) => {
