@@ -1,9 +1,27 @@
 import fs from 'fs'
-import { parseAll, parseAllWithKana } from '../src'
+import path from 'path'
+import { generate } from '../src/generate'
 
-test('parse', () => {
-  expect(JSON.stringify(parseAll(), null, 2)).toBe(fs.readFileSync('__tests__/all.json', 'utf8'))
-  expect(JSON.stringify(parseAllWithKana(), null, 2)).toBe(
-    fs.readFileSync('__tests__/allWithKana.json', 'utf8')
-  )
+const readDirRecursive = (dirPath: string): string[] =>
+  fs
+    .readdirSync(dirPath, { withFileTypes: true })
+    .flatMap(file =>
+      file.isDirectory()
+        ? readDirRecursive(path.join(dirPath, file.name))
+        : [path.join(dirPath, file.name)]
+    )
+
+describe('cli test', () => {
+  const dirPath = 'docs/api'
+  afterAll(() => fs.promises.rmdir('_docs', { recursive: true }))
+
+  test('main', async () => {
+    await generate(`_${dirPath}`)
+
+    for (const filePath of readDirRecursive('docs/api')) {
+      expect(fs.readFileSync(`_${filePath}`, 'utf8')).toBe(
+        fs.readFileSync(filePath, 'utf8').replace(/\r/g, '')
+      )
+    }
+  }, 100000)
 })
