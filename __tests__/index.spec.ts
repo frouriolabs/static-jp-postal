@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import { generate } from '../src/generate'
 
+jest.setTimeout(100000)
+
 const readDirRecursive = (dirPath: string): string[] =>
   fs
     .readdirSync(dirPath, { withFileTypes: true })
@@ -23,5 +25,5 @@ describe('cli test', () => {
         fs.readFileSync(filePath, 'utf8').replace(/\r/g, '')
       )
     }
-  }, 100000)
+  })
 })
