@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/frouriolabs/static-jp-postal/compare/v0.0.1...v0.0.2) (2022-05-02)
+
+
+### Bug Fixes
+
+* add csv file to npm ([caf31b8](https://github.com/frouriolabs/static-jp-postal/commit/caf31b838500ec4336b3a11d0b4f2cbfe467dee1))
+
 ### 0.0.1 (2022-05-02)
 
 
