@@ -1,8 +1,8 @@
 {
   "name": "static-jp-postal",
-  "version": "0.0.1",
-  "description": "TypeScript OSS template",
-  "author": "Solufa <solufa2020@gmail.com>",
+  "version": "0.0.0",
+  "description": "Static JP postal",
+  "author": "Frourio Inc.",
   "license": "MIT",
   "bin": "bin/index.js",
   "scripts": {
@@ -20,13 +20,13 @@
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
-  "homepage": "https://github.com/foo/baz#readme",
+  "homepage": "hhttps://github.com/frouriolabs/static-jp-postal#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/foo/baz.git"
+    "url": "git@github.com:frouriolabs/static-jp-postal.git"
   },
   "bugs": {
-    "url": "https://github.com/foo/baz/issues"
+    "url": "https://github.com/frouriolabs/static-jp-postal/issues"
   },
   "files": [
     "dist"
