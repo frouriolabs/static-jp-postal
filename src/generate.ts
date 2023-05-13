@@ -1,15 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import { readCsv } from './readCsv'
-import { Word } from './type'
 
-export const API_VER = 'v0.1'
+export const API_VER = 'v0.2'
 
-export const generate = async (
-  outputDir = 'api',
-  input = path.join(__dirname, '../assets/KEN_ALL.CSV')
-) => {
-  const csv = await readCsv(input)
+export const generate = async (outputDir = 'api', inputDir = path.join(__dirname, '../assets')) => {
+  const csv = await readCsv(inputDir)
   const data = csv.reduce((dist, row) => {
     return {
       ...dist,
@@ -25,7 +21,7 @@ export const generate = async (
         ]
       }
     }
-  }, {} as Record<string, Record<string, { pref: Word; address1: Word; address2?: Word }[]>>)
+  }, {} as Record<string, Record<string, { pref: string; address1: string; address2?: string }[]>>)
 
   const baseDir = path.join(outputDir, API_VER)
 

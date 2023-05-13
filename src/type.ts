@@ -1,2 +1,1 @@
-export type Word = { kana: string; kanji: string }
-export type Row = { code: string; address: [Word, Word, Word | null] }
+export type Row = { code: string; address: [string, string, string | null] }
