@@ -5,6 +5,19 @@ import { readCsv } from './readCsv'
 export const API_VER = 'v0.2'
 
 export const generate = async (outputDir = 'api', inputDir = path.join(__dirname, '../assets')) => {
+  const baseDir = path.join(outputDir, API_VER)
+
+  if (!fs.existsSync(baseDir)) {
+    fs.mkdirSync(baseDir, { recursive: true })
+  } else if (fs.readdirSync(baseDir).length) {
+    console.log(
+      `${
+        require('../package.json').name
+      } error: destination path '${baseDir}' already exists and is not an empty directory.`
+    )
+    return
+  }
+
   const csv = await readCsv(inputDir)
   const data = csv.reduce((dist, row) => {
     return {
@@ -22,17 +35,6 @@ export const generate = async (outputDir = 'api', inputDir = path.join(__dirname
       }
     }
   }, {} as Record<string, Record<string, { pref: string; address1: string; address2?: string }[]>>)
-
-  const baseDir = path.join(outputDir, API_VER)
-
-  if (!fs.existsSync(baseDir)) {
-    fs.mkdirSync(baseDir, { recursive: true })
-  } else if (fs.readdirSync(baseDir).length) {
-    console.log(
-      `fatal: destination path '${baseDir}' already exists and is not an empty directory.`
-    )
-    return
-  }
 
   Object.keys(data).forEach(head => {
     if (!fs.existsSync(`${baseDir}/${head}`)) {

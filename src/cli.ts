@@ -7,7 +7,6 @@ export const run = (args: string[]) => {
     alias: { v: 'version', i: 'inputDir', o: 'outputDir' }
   })
 
-  // eslint-disable-next-line no-unused-expressions
   argv.version !== undefined
     ? console.log(`v${require('../package.json').version}`)
     : generate(argv.outputDir, argv.inputDir)
