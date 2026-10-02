@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import { parse } from '../src/parse';
 
 describe('parse', () => {

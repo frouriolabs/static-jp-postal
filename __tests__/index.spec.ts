@@ -1,8 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import { describe, expect, test, afterAll } from 'vitest';
 import { API_VER, generate } from '../src/generate';
-
-jest.setTimeout(100000);
 
 const readDirRecursive = (dirPath: string): string[] =>
   fs
@@ -25,5 +24,5 @@ describe('cli test', () => {
         fs.readFileSync(filePath, 'utf8').replace(/\r/g, ''),
       );
     }
-  });
+  }, 100000);
 });
