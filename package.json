@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "npm run build && node bin/index.js -o docs/api",
     "build": "npm run rimraf && tsc",
-    "rimraf": "node -e \"require('fs').existsSync('dist') && require('fs').rmdirSync('dist', { recursive: true })\"",
+    "rimraf": "node -e \"require('fs').existsSync('dist') && require('fs').rmSync('dist', { recursive: true })\"",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lint:js": "eslint --ext .ts,.js --ignore-path .gitignore .",
     "lint:prettier": "prettier --ignore-path .gitignore --check \"./**/*.{ts,js}\"",
@@ -32,7 +32,6 @@
     "typescript"
   ],
   "dependencies": {
-    "csv-parse": "^5.0.4",
     "iconv-lite": "^0.6.3"
   },
   "eslintConfig": {
