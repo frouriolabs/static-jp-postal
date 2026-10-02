@@ -7,7 +7,7 @@
   "bin": "bin/index.js",
   "scripts": {
     "dev": "npm run build && node bin/index.js -o docs/api",
-    "build": "npm run rimraf && tsc",
+    "build": "npm run rimraf && tsc -p tsconfig.build.json",
     "rimraf": "node -e \"require('fs').existsSync('dist') && require('fs').rmSync('dist', { recursive: true })\"",
     "lint": "oxlint && oxfmt --check",
     "lint:fix": "oxlint --fix && oxfmt",
@@ -33,9 +33,10 @@
     "iconv-lite": "^0.7.3"
   },
   "devDependencies": {
+    "@types/node": "^26.6.4",
     "oxfmt": "^0.71.0",
     "oxlint": "^1.86.0",
-    "typescript": "^5.0.4",
+    "typescript": "^7.0.2",
     "vitest": "^5.0.3"
   }
 }
