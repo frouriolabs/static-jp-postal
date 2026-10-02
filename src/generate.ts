@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { readCsv } from './readCsv';
 
-export const API_VER = 'v0.2';
+export const API_VER = 'v0.3';
 
 export const generate = async (outputDir = 'api', inputDir = path.join(__dirname, '../assets')) => {
   const baseDir = path.join(outputDir, API_VER);

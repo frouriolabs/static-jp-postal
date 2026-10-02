@@ -8,7 +8,7 @@
 
 ```js
 const data = await fetch(
-  `https://frouriolabs.github.io/static-jp-postal/api/v0.1/001/0000.json`,
+  `https://frouriolabs.github.io/static-jp-postal/api/v0.3/001/0000.json`,
 ).then((res) => res.json());
 ```
 
@@ -24,5 +24,10 @@ $ npx static-jp-postal -o public/api
 ```
 
 ```js
-const data = await fetch(`/api/v0.1/001/0000.json`).then((res) => res.json());
+const data = await fetch(`/api/v0.3/001/0000.json`).then((res) => res.json());
 ```
+
+## CSV更新
+
+- assets/JIGYOSYO.CSV: https://www.post.japanpost.jp/service/search/zipcode/download/office/zip/jigyosyo.zip
+- assets/KEN_ALL.CSV: https://www.post.japanpost.jp/service/search/zipcode/download/kogaki/zip/ken_all.zip
