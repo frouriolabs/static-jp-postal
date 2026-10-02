@@ -1,13 +1,17 @@
-import minimist from 'minimist'
+import { parseArgs } from 'node:util'
 import { generate } from './generate'
 
 export const run = (args: string[]) => {
-  const argv = minimist(args, {
-    string: ['version', 'inputDir', 'outputDir'],
-    alias: { v: 'version', i: 'inputDir', o: 'outputDir' }
+  const { values } = parseArgs({
+    args,
+    options: {
+      version: { type: 'string', short: 'v' },
+      inputDir: { type: 'string', short: 'i' },
+      outputDir: { type: 'string', short: 'o' }
+    }
   })
 
-  argv.version !== undefined
+  values.version !== undefined
     ? console.log(`v${require('../package.json').version}`)
-    : generate(argv.outputDir, argv.inputDir)
+    : generate(values.outputDir, values.inputDir)
 }

@@ -33,8 +33,7 @@
   ],
   "dependencies": {
     "csv-parse": "^5.0.4",
-    "iconv-lite": "^0.6.3",
-    "minimist": "^1.2.5"
+    "iconv-lite": "^0.6.3"
   },
   "eslintConfig": {
     "env": {
@@ -83,7 +82,6 @@
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
-    "@types/minimist": "^1.2.2",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "eslint": "^8.40.0",

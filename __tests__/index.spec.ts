@@ -15,7 +15,7 @@ const readDirRecursive = (dirPath: string): string[] =>
 
 describe('cli test', () => {
   const dirPath = 'docs/api'
-  afterAll(() => fs.promises.rmdir('_docs', { recursive: true }))
+  afterAll(() => fs.promises.rm('_docs', { recursive: true }))
 
   test('main', async () => {
     await generate(`_${dirPath}`)
