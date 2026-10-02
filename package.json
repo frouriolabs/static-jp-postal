@@ -1,6 +1,6 @@
 {
   "name": "static-jp-postal",
-  "version": "0.2.0",
+  "version": "0.0.0",
   "description": "Static JP postal",
   "author": "Frourio Inc.",
   "license": "MIT",
@@ -9,10 +9,6 @@
     "dev": "npm run build && node bin/index.js -o docs/api",
     "build": "npm run rimraf && tsc",
     "rimraf": "node -e \"require('fs').existsSync('dist') && require('fs').rmdirSync('dist', { recursive: true })\"",
-    "release": "standard-version --skip.tag",
-    "release:major": "npm run release -- --release-as major",
-    "release:minor": "npm run release -- --release-as minor",
-    "release:patch": "npm run release -- --release-as patch",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lint:js": "eslint --ext .ts,.js --ignore-path .gitignore .",
     "lint:prettier": "prettier --ignore-path .gitignore --check \"./**/*.{ts,js}\"",
@@ -20,7 +16,7 @@
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
-  "homepage": "hhttps://github.com/frouriolabs/static-jp-postal#readme",
+  "homepage": "https://github.com/frouriolabs/static-jp-postal#readme",
   "repository": {
     "type": "git",
     "url": "git@github.com:frouriolabs/static-jp-postal.git"
@@ -99,7 +95,6 @@
     "eslint-plugin-promise": "^6.1.1",
     "jest": "^29.5.0",
     "prettier": "^2.8.8",
-    "standard-version": "^9.5.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
