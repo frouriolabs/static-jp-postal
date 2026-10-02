@@ -4,7 +4,7 @@ on: push
 
 jobs:
   test:
-    name: "Test on Node:${{ matrix.node-version }} OS:${{ matrix.os }}"
+    name: 'Test on Node:${{ matrix.node-version }} OS:${{ matrix.os }}'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -22,7 +22,7 @@ jobs:
       - uses: actions/cache@v6
         id: npm-cache
         with:
-          path: "node_modules"
+          path: 'node_modules'
           key: ${{ runner.os }}-node-v${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
       - run: npm install
         if: steps.npm-cache.outputs.cache-hit != 'true'
@@ -47,11 +47,11 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
       - uses: actions/cache@v6
         id: npm-cache
         with:
-          path: "node_modules"
+          path: 'node_modules'
           key: ${{ runner.os }}-node-v${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
       - run: npm install
         if: steps.npm-cache.outputs.cache-hit != 'true'

@@ -1,1 +1,1 @@
-export type Row = { code: string; address: [string, string, string | null] }
+export type Row = { code: string; address: [string, string, string | null] };

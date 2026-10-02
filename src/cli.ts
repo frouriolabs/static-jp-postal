@@ -1,5 +1,5 @@
-import { parseArgs } from 'node:util'
-import { generate } from './generate'
+import { parseArgs } from 'node:util';
+import { generate } from './generate';
 
 export const run = (args: string[]) => {
   const { values } = parseArgs({
@@ -7,11 +7,13 @@ export const run = (args: string[]) => {
     options: {
       version: { type: 'string', short: 'v' },
       inputDir: { type: 'string', short: 'i' },
-      outputDir: { type: 'string', short: 'o' }
-    }
-  })
+      outputDir: { type: 'string', short: 'o' },
+    },
+  });
 
-  values.version !== undefined
-    ? console.log(`v${require('../package.json').version}`)
-    : generate(values.outputDir, values.inputDir)
-}
+  if (values.version !== undefined) {
+    console.log(`v${require('../package.json').version}`);
+  } else {
+    generate(values.outputDir, values.inputDir);
+  }
+};

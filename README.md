@@ -8,8 +8,8 @@
 
 ```js
 const data = await fetch(
-  `https://frouriolabs.github.io/static-jp-postal/api/v0.1/001/0000.json`
-).then(res => res.json())
+  `https://frouriolabs.github.io/static-jp-postal/api/v0.1/001/0000.json`,
+).then((res) => res.json());
 ```
 
 ※URI が変わる可能性があるので商用本番利用は非推奨です。
@@ -24,5 +24,5 @@ $ npx static-jp-postal -o public/api
 ```
 
 ```js
-const data = await fetch(`/api/v0.1/001/0000.json`).then(res => res.json())
+const data = await fetch(`/api/v0.1/001/0000.json`).then((res) => res.json());
 ```
